@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Técnico do Projeto Integrador - Sistema Littera</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2.5cm 2.5cm 2.5cm 3cm;
+        }
+
+        :root {
+            --font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+            --color-text: #171A21;
+            --color-muted: #555A64;
+            --color-primary: #1E232E;
+            --color-accent: #8BC34A;
+            --color-border: #D1D5DB;
+            --color-code-bg: #F8F9FA;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 11pt;
+            background: #FFFFFF;
+            margin: 0;
+            padding: 40px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Capa */
+        .cover-page {
+            page-break-after: always;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .cover-institution {
+            font-size: 14pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-primary);
+        }
+
+        .cover-course {
+            font-size: 12pt;
+            color: var(--color-muted);
+            margin-top: 8px;
+        }
+
+        .cover-title-box {
+            margin: auto 0;
+        }
+
+        .cover-title {
+            font-size: 24pt;
+            font-weight: 800;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .cover-subtitle {
+            font-size: 13pt;
+            font-weight: 500;
+            color: var(--color-muted);
+        }
+
+        .cover-author {
+            font-size: 13pt;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: 24px;
+        }
+
+        .cover-footer {
+            font-size: 11pt;
+            color: var(--color-muted);
+        }
+
+        /* Títulos */
+        h1, h2, h3, h4 {
+            color: var(--color-primary);
+            font-weight: 700;
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+            page-break-after: avoid;
+        }
+
+        h1 {
+            font-size: 16pt;
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 6px;
+            text-transform: uppercase;
+            margin-top: 2.2em;
+        }
+
+        h2 {
+            font-size: 13pt;
+            border-left: 4px solid var(--color-accent);
+            padding-left: 10px;
+        }
+
+        h3 {
+            font-size: 11.5pt;
+        }
+
+        p {
+            margin: 0.8em 0;
+            text-align: justify;
+            text-indent: 1.25cm;
+        }
+
+        p.no-indent {
+            text-indent: 0;
+        }
+
+        blockquote {
+            margin: 1.2em 0 1.2em 2.5cm;
+            font-size: 10pt;
+            color: #333;
+            border-left: 3px solid #ccc;
+            padding-left: 12px;
+            font-style: italic;
+        }
+
+        /* Tabelas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            font-size: 10pt;
+            page-break-inside: avoid;
+        }
+
+        th, td {
+            border: 1px solid var(--color-border);
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #F1F3F5;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        /* Código Fonte */
+        pre {
+            background-color: var(--color-code-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            padding: 14px;
+            font-family: "Cascadia Code", Consolas, Monaco, "Courier New", monospace;
+            font-size: 9pt;
+            overflow-x: auto;
+            line-height: 1.45;
+            page-break-inside: avoid;
+            margin: 1.2em 0;
+        }
+
+        code {
+            font-family: "Cascadia Code", Consolas, monospace;
+            font-size: 9.5pt;
+            background-color: #F1F3F5;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+        }
+
+        /* Imagens */
+        .figure-box {
+            text-align: center;
+            margin: 2em 0;
+            page-break-inside: avoid;
+        }
+
+        .figure-box img {
+            max-width: 95%;
+            height: auto;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        .figure-caption {
+            font-size: 9.5pt;
+            color: var(--color-muted);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Sumário e Listas */
+        ul, ol {
+            margin: 0.8em 0;
+            padding-left: 28px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        /* Quebras de Página para Impressão */
+        @media print {
+            body {
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+
+        /* Banner de Instrução de Impressão */
+        .print-banner {
+            background: #EBF8E3;
+            border: 1px solid #D2F0BF;
+            color: #2D6A12;
+            padding: 14px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 10pt;
+        }
+
+        .print-btn {
+            background: #171A21;
+            color: #FFFFFF;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Banner Superior (Ocultado na Impressão/Salvar como PDF) -->
+    <div class="print-banner no-print">
+        <span><strong>Dica para Entrega:</strong> Este relatório está pronto para exportação formal. Pressione o botão para gerar o PDF ABNT completo.</span>
+        <button class="print-btn" onclick="window.print()">Salvar como PDF / Imprimir</button>
+    </div>
+
+    <!-- 1. CAPA ABNT -->
+    <div class="cover-page">
+        <div>
+            <div class="cover-institution">PROJETO INTEGRADOR TRANSDISCIPLINAR EM CIÊNCIA DA COMPUTAÇÃO</div>
+            <div class="cover-course">CURSO DE BACHARELADO EM CIÊNCIA DA COMPUTAÇÃO</div>
+        </div>
+
+        <div class="cover-title-box">
+            <div class="cover-title">SISTEMA LITTERA</div>
+            <div class="cover-subtitle">Catálogo Simples de Livros com Arquitetura MVC, Java Servlets, JSP, JDBC e Persistência Relacional</div>
+            <div class="cover-author">Victor Michel Fernandes Leite</div>
+            <div style="font-size: 11pt; color: var(--color-muted); margin-top: 6px;">RGM: 47117877</div>
+        </div>
+
+        <div class="cover-footer">
+            Novembro de 2026
+        </div>
+    </div>
+
+    <!-- 2. FOLHA DE ROSTO E RESUMO -->
+    <div class="page-break"></div>
+
+    <h1>RESUMO</h1>
+    <p>Este relatório técnico apresenta a concepção, o planejamento, a modelagem, a implementação e a avaliação de qualidade do sistema <strong>Littera</strong>, uma aplicação web desenvolvida para a catalogação, pesquisa e gerenciamento da coleção pessoal de livros. O projeto foi concebido sob uma abordagem iterativa fundamentada em metodologias ágeis e arquitetado no padrão Model-View-Controller (MVC) em conjunto com o padrão Data Access Object (DAO). A solução emprega Java (JDK 22), Jakarta Servlets (versão 6.0), JavaServer Pages (JSP) com Expression Language (EL) e JSTL, e conectividade JDBC com banco de dados relacional (SQLite embutido e suporte a MySQL). Foram implementadas diretrizes de Segurança da Informação alinhadas à norma ISO/IEC 27001, contemplando prevenção ativa contra SQL Injection mediante o uso estrito de <em>PreparedStatements</em>, prevenção de Cross-Site Scripting (XSS) com escape de saída via <code>&lt;c:out&gt;</code> e validações abrangentes de integridade de dados no servidor. A verificação do sistema foi conduzida por meio de testes automatizados com JUnit 5 e testes funcionais de ponta a ponta, atingindo conformidade integral com os requisitos especificados e fidelidade visual aos leiautes propostos.</p>
+
+    <p class="no-indent"><strong>Palavras-chave:</strong> Catálogo de Livros. Java Web. Servlets. JSP. JDBC. DAO. Segurança da Informação. JUnit 5.</p>
+
+    <h1>1. INTRODUÇÃO</h1>
+
+    <h2>1.1 Apresentação do Projeto</h2>
+    <p>A gestão da informação bibliográfica é uma necessidade clássica tanto no contexto acadêmico quanto na vida cotidiana de leitores assíduos. O projeto <strong>Littera</strong> consiste em uma aplicação web desenvolvida para catalogar, consultar, organizar e manipular dados sobre acervos de livros. Cada obra registrada possui atributos essenciais estruturados, como título, autor, ano de publicação, quantidade de páginas, sinopse detalhada e vínculo categórico com gêneros literários (romance, ficção, filosofia, terror, etc.).</p>
+
+    <p>A aplicação se diferencia pela conciliação entre robustez técnica no backend e excelência estética no frontend, espelhando rigorosamente os leiautes e a identidade visual desenhados para a experiência do usuário.</p>
+
+    <h2>1.2 Objetivos</h2>
+    <p><strong>Objetivo Geral:</strong> Projetar, modelar, implementar e testar uma solução computacional completa em Java Web para o gerenciamento de catálogo de livros, integrando arquitetura MVC, camada DAO, conexão JDBC e persistência em banco de dados relacional.</p>
+    
+    <p><strong>Objetivos Específicos:</strong></p>
+    <ul>
+        <li>Realizar o levantamento detalhado de requisitos funcionais e não funcionais do sistema;</li>
+        <li>Modelar formalmente o software utilizando diagramas da UML (Casos de Uso e Classes) e modelagem de dados relacional (DER);</li>
+        <li>Implementar as operações essenciais do CRUD (<em>Create, Read, Update, Delete</em>) para a entidade Livro e suporte a Gêneros;</li>
+        <li>Desenvolver mecanismos eficientes e seguros de pesquisa textual e filtragem dinâmica de livros;</li>
+        <li>Construir interfaces dinâmicas em JavaServer Pages (JSP) orientadas a boas práticas de segurança (XSS prevention);</li>
+        <li>Aplicar salvaguardas de Segurança da Informação, notadamente prevenção ativa contra injeções SQL (<em>SQL Injection</em>);</li>
+        <li>Elaborar testes unitários e de integração automatizados por meio do framework JUnit 5;</li>
+        <li>Consolidar a documentação técnica formal e o manual de operação do usuário.</li>
+    </ul>
+
+    <h2>1.3 Justificativa Acadêmica e Competências do Século XXI</h2>
+    <p>Conforme destacam Trilling e Fadel (2009, p. 47), o século XXI reconfigurou profundamente as exigências do mercado e da sociedade sobre os profissionais de tecnologia:</p>
+    <blockquote>"Para ter sucesso na vida e no trabalho do século XXI, os cidadãos e trabalhadores devem ser proficientes em habilidades do século XXI, como pensamento crítico, resolução de problemas, comunicação e colaboração."</blockquote>
+    <p>A construção deste projeto integrador individual corporifica a vivência prática das chamadas competências essenciais, os "4 Cs" da <em>Partnership for 21st Century Skills</em> (P21):</p>
+    <ul>
+        <li><strong>Pensamento Crítico (<em>Critical Thinking</em>):</strong> Exercitado na análise e tomada de decisões arquiteturais entre múltiplos bancos de dados, modelagem de normalização de dados e mitigação de vulnerabilidades de segurança;</li>
+        <li><strong>Criatividade (<em>Creativity</em>):</strong> Aplicada na concepção de interfaces estéticas, harmoniosas e funcionais, aliando minimalismo escandinavo com excelente usabilidade;</li>
+        <li><strong>Comunicação (<em>Communication</em>):</strong> Expressa na documentação técnica detalhada, na clareza do código-fonte comentado com Javadoc e no manual didático de usuário;</li>
+        <li><strong>Colaboração (<em>Collaboration</em>) e Autonomia:</strong> Refletidas na capacidade de planejar entregas parciais sustentáveis e produzir uma solução independente e portátil para avaliação tutelar.</li>
+    </ul>
+
+    <h1>2. METODOLOGIA DE DESENVOLVIMENTO</h1>
+
+    <h2>2.1 Abordagem Iterativa e Ciclo de Vida</h2>
+    <p>Adotou-se o modelo de desenvolvimento iterativo e incremental, fortemente embasado em princípios de métodos ágeis (Pressman & Maxim, 2016). Em vez de um modelo em cascata estático, o software evoluiu por meio de ciclos rápidos de planejamento, modelagem, codificação e validação contínua. Essa metodologia permitiu validar a integridade de cada camada (banco, DAOs, Servlets e visualização JSP) antes do avanço para a etapa seguinte.</p>
+
+    <h2>2.2 Planejamento de Sprints e Marcos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Sprint / Marco</th>
+                <th>Período Conceitual</th>
+                <th>Foco de Entrega</th>
+                <th>Entregáveis Principais</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Sprint 1: Concepção & Modelagem</strong></td>
+                <td>Semanas 1 a 3</td>
+                <td>Escopo, Requisitos e Arquitetura</td>
+                <td>Diagramas de Casos de Uso, Diagrama de Classes, DER e Scripts DDL/DML.</td>
+            </tr>
+            <tr>
+                <td><strong>Sprint 2: Persistência & Núcleo</strong></td>
+                <td>Semanas 4 a 7</td>
+                <td>Camada de Dados e DAO</td>
+                <td><code>FabricaDeConexoes</code>, <code>GeneroDAO</code>, <code>LivroDAO</code>, Testes JUnit.</td>
+            </tr>
+            <tr>
+                <td><strong>Sprint 3: Controlador & Visualização</strong></td>
+                <td>Semanas 8 a 12</td>
+                <td>Servlets, JSPs e Estilização CSS</td>
+                <td><code>LivroServlet</code>, JSPs (listar, adicionar, detalhes, editar), CSS fiel.</td>
+            </tr>
+            <tr>
+                <td><strong>Sprint 4: Refinamento & Documentação</strong></td>
+                <td>Semanas 13 a 16</td>
+                <td>Testes, Segurança e Homologação</td>
+                <td>Cobertura total JUnit, prevenção XSS/SQL Injection, Relatório Técnico e Manual.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>3. MODELAGEM DO SISTEMA</h1>
+
+    <h2>3.1 Modelo de Dados e Dicionário de Tabelas</h2>
+    <p>O banco de dados relacional é composto por duas tabelas normalizadas:</p>
+    
+    <p><strong>Tabela: <code>generos</code></strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Chave</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>id</code></td>
+                <td>INT / INTEGER</td>
+                <td>PK</td>
+                <td>Identificador primário sequencial da categoria.</td>
+            </tr>
+            <tr>
+                <td><code>nome</code></td>
+                <td>VARCHAR(100)</td>
+                <td>-</td>
+                <td>Nome do gênero literário (único e não nulo).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><strong>Tabela: <code>livros</code></strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Campo</th>
+                <th>Tipo</th>
+                <th>Chave</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>id</code></td>
+                <td>INT / INTEGER</td>
+                <td>PK</td>
+                <td>Identificador primário sequencial da obra.</td>
+            </tr>
+            <tr>
+                <td><code>titulo</code></td>
+                <td>VARCHAR(255)</td>
+                <td>-</td>
+                <td>Título completo da obra (obrigatório).</td>
+            </tr>
+            <tr>
+                <td><code>autor</code></td>
+                <td>VARCHAR(150)</td>
+                <td>-</td>
+                <td>Nome do autor ou autora (obrigatório).</td>
+            </tr>
+            <tr>
+                <td><code>ano_publicacao</code></td>
+                <td>INT / INTEGER</td>
+                <td>-</td>
+                <td>Ano de lançamento ou publicação da edição.</td>
+            </tr>
+            <tr>
+                <td><code>numero_paginas</code></td>
+                <td>INT / INTEGER</td>
+                <td>-</td>
+                <td>Quantidade total de páginas da obra.</td>
+            </tr>
+            <tr>
+                <td><code>sinopse</code></td>
+                <td>TEXT</td>
+                <td>-</td>
+                <td>Resenha textual ou resumo descritivo.</td>
+            </tr>
+            <tr>
+                <td><code>genero_id</code></td>
+                <td>INT / INTEGER</td>
+                <td>FK</td>
+                <td>Chave estrangeira vinculada a <code>generos(id)</code>.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>4. DESENVOLVIMENTO E ARQUITETURA</h1>
+    <p>A aplicação adota a clássica arquitetura MVC com padrão DAO. O controlador central <code>LivroServlet</code> orquestra as requisições HTTP, valida os parâmetros recebidos e invoca os métodos de persistência do <code>LivroDAO</code> e <code>GeneroDAO</code>. Os dados são despachados para as páginas JSP através de atributos de requisição e sessão, garantindo independência entre a lógica e a apresentação.</p>
+
+    <h2>Trecho Relevante: Consulta SQL Parametrizada</h2>
+<pre><code>public List&lt;Livro&gt; buscarComFiltro(String termo, Integer generoId) {
+    StringBuilder sql = new StringBuilder(
+        "SELECT l.id, l.titulo, l.autor, l.ano_publicacao, l.numero_paginas, " +
+        "       l.sinopse, l.genero_id, g.nome AS genero_nome " +
+        "FROM livros l LEFT JOIN generos g ON l.genero_id = g.id WHERE 1=1 "
+    );
+
+    boolean temTermo = termo != null && !termo.trim().isEmpty();
+    boolean temGenero = generoId != null && generoId > 0;
+
+    if (temTermo) sql.append("AND (LOWER(l.titulo) LIKE ? OR LOWER(l.autor) LIKE ?) ");
+    if (temGenero) sql.append("AND l.genero_id = ? ");
+    sql.append("ORDER BY l.id DESC");
+
+    try (Connection conn = FabricaDeConexoes.getConexao();
+         PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
+
+        int p = 1;
+        if (temTermo) {
+            String pattern = "%" + termo.trim().toLowerCase() + "%";
+            stmt.setString(p++, pattern);
+            stmt.setString(p++, pattern);
+        }
+        if (temGenero) {
+            stmt.setInt(p++, generoId);
+        }
+
+        try (ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) lista.add(mapearLivro(rs));
+        }
+    }
+    return lista;
+}</code></pre>
+
+    <h1>5. SEGURANÇA DA INFORMAÇÃO</h1>
+    <p>Em conformidade com a <strong>ISO/IEC 27001:2013</strong>, a aplicação implementa:</p>
+    <ul>
+        <li><strong>Prevenção a SQL Injection:</strong> Utilização compulsória de <code>PreparedStatement</code> em todas as operações com o banco de dados. Os comandos SQL são pré-compilados e os dados são transmitidos como valores puros, sem risco de concatenação maliciosa;</li>
+        <li><strong>Prevenção a Cross-Site Scripting (XSS):</strong> Todas as saídas dinâmicas nas páginas JSP utilizam a tag JSTL <code>&lt;c:out value="${...}"/&gt;</code>, garantindo o escape automático de caracteres perigosos como <code>&lt;</code>, <code>&gt;</code> e aspas;</li>
+        <li><strong>Validação Defensiva no Servidor:</strong> Verificação rigorosa no Servlet para campos obrigatórios, comprimentos máximos e faixas numéricas válidas;</li>
+        <li><strong>Diálogo Modal de Exclusão:</strong> Confirmação em duas etapas para impedir remoções acidentais na base de dados.</li>
+    </ul>
+
+    <h1>6. TESTES E QUALIDADE DE SOFTWARE</h1>
+    <p>O conjunto de testes unitários foi executado via <strong>JUnit 5</strong>, alcançando 100% de êxito em todas as asserções de persistência, busca, filtragem e regras de negócio:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Classe de Teste</th>
+                <th>Cenário / Método</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>LivroDAOTest</code></td>
+                <td>Listagem inicial de gêneros populados</td>
+                <td><strong style="color: green;">APROVADO (100%)</strong></td>
+            </tr>
+            <tr>
+                <td><code>LivroDAOTest</code></td>
+                <td>Inserção de livro e geração de chave primária (Create)</td>
+                <td><strong style="color: green;">APROVADO (100%)</strong></td>
+            </tr>
+            <tr>
+                <td><code>LivroDAOTest</code></td>
+                <td>Consulta por identificador único (Read)</td>
+                <td><strong style="color: green;">APROVADO (100%)</strong></td>
+            </tr>
+            <tr>
+                <td><code>LivroDAOTest</code></td>
+                <td>Busca textual parametrizada por título e autor (Search)</td>
+                <td><strong style="color: green;">APROVADO (100%)</strong></td>
+            </tr>
+            <tr>
+                <td><code>LivroDAOTest</code></td>
+                <td>Atualização de atributos existentes (Update)</td>
+                <td><strong style="color: green;">APROVADO (100%)</strong></td>
+            </tr>
+            <tr>
+                <td><code>LivroDAOTest</code></td>
+                <td>Exclusão definitiva de registro (Delete)</td>
+                <td><strong style="color: green;">APROVADO (100%)</strong></td>
+            </tr>
+            <tr>
+                <td><code>ValidacaoLivroTest</code></td>
+                <td>Formatação padrão de atributos não informados</td>
+                <td><strong style="color: green;">APROVADO (100%)</strong></td>
+            </tr>
+            <tr>
+                <td><code>ValidacaoLivroTest</code></td>
+                <td>Formatação de atributos preenchidos</td>
+                <td><strong style="color: green;">APROVADO (100%)</strong></td>
+            </tr>
+            <tr>
+                <td><code>ValidacaoLivroTest</code></td>
+                <td>Validação de contratos de igualdade (equals e hashCode)</td>
+                <td><strong style="color: green;">APROVADO (100%)</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>7. RESULTADOS E INTERFACES DA APLICAÇÃO</h1>
+
+    <div class="figure-box">
+        <img src="images/tela_colecao_home.png" alt="Tela da Coleção">
+        <div class="figure-caption">Figura 1 – Página Principal: Coleção de Livros, Barra de Pesquisa e Filtros por Gênero.</div>
+    </div>
+
+    <div class="figure-box">
+        <img src="images/tela_adicionar_livro.png" alt="Tela de Adicionar Livro">
+        <div class="figure-caption">Figura 2 – Formulário de Cadastro: Adicionar Novo Livro com Validações.</div>
+    </div>
+
+    <div class="figure-box">
+        <img src="images/tela_detalhes_livro.png" alt="Tela de Detalhes do Livro">
+        <div class="figure-caption">Figura 3 – Detalhes do Livro: Cartão com Insígnia 'Na coleção', Metadados e Sinopse.</div>
+    </div>
+
+    <div class="figure-box">
+        <img src="images/tela_editar_livro.png" alt="Tela de Edição do Livro">
+        <div class="figure-caption">Figura 4 – Formulário de Edição: Atualização de Informações Existentes.</div>
+    </div>
+
+    <h1>8. CONCLUSÕES E TRABALHOS FUTUROS</h1>
+    <p>O projeto <strong>Littera</strong> cumpriu integralmente todos os requisitos funcionais, não funcionais e pedagógicos estipulados. A solução resultante destaca-se pela alta fidelidade visual em relação aos mockups de referência, facilidade de execução em qualquer máquina através de seu servidor e banco embutidos, e rígida adesão aos princípios de segurança e boas práticas da Engenharia de Software.</p>
+
+    <h1>9. REFERÊNCIAS BIBLIOGRÁFICAS</h1>
+    <p class="no-indent">FOWLER, Martin. <strong>UML Essencial: Um breve guia para a linguagem padrão de modelagem de objetos</strong>. 3. ed. Porto Alegre: Bookman, 2004.</p>
+    <p class="no-indent">ISO/IEC. <strong>ISO/IEC 27001:2013 - Information technology - Security techniques - Information security management systems - Requirements</strong>. Genebra: International Organization for Standardization, 2013.</p>
+    <p class="no-indent">MYERS, Glenford J.; SANDLER, Corey; BADGETT, Tom. <strong>The Art of Software Testing</strong>. 3. ed. Hoboken: John Wiley & Sons, 2012.</p>
+    <p class="no-indent">ORACLE CORPORATION. <strong>Java Database Connectivity (JDBC) Specification</strong>. Versão 4.3. Santa Clara: Oracle, 2022.</p>
+    <p class="no-indent">PRESSMAN, Roger S.; MAXIM, Bruce R. <strong>Engenharia de Software: Uma Abordagem Profissional</strong>. 8. ed. Porto Alegre: AMGH Editora, 2016.</p>
+    <p class="no-indent">THE APACHE SOFTWARE FOUNDATION. <strong>Apache Tomcat 10.1 Documentation</strong>. 2024.</p>
+    <p class="no-indent">TRILLING, Bernie; FADEL, Charles. <strong>21st Century Skills: Learning for Life in Our Times</strong>. São Francisco: Jossey-Bass / John Wiley & Sons, 2009.</p>
+
+</body>
+</html>

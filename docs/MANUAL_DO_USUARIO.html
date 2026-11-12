@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Usuário Simplificado - Sistema Littera</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            color: #171A21;
+            line-height: 1.6;
+            font-size: 10.5pt;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 20pt;
+            color: #13161F;
+            border-bottom: 2px solid #B4E839;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 13pt;
+            color: #13161F;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            border-left: 4px solid #B4E839;
+            padding-left: 8px;
+        }
+
+        h3 {
+            font-size: 11pt;
+            color: #2D3748;
+            margin-top: 16px;
+            margin-bottom: 4px;
+        }
+
+        p, li {
+            text-align: justify;
+            margin-bottom: 6px;
+        }
+
+        code {
+            background: #F1F3F5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-size: 9.5pt;
+        }
+
+        pre {
+            background: #F8F9FA;
+            border: 1px solid #E5E7EB;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-family: Consolas, monospace;
+            font-size: 9pt;
+            margin: 10px 0;
+        }
+
+        .box-destaque {
+            background: #F7F5F0;
+            border: 1px solid #E5E2D9;
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin: 14px 0;
+        }
+
+        @media print {
+            body { padding: 0; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Littera - Manual do Usuário Simplificado</h1>
+    <div style="font-size: 10pt; color: #555A64; margin-bottom: 16px;">
+        <strong>Disciplina:</strong> Projeto Integrador Transdisciplinar em Ciência da Computação<br>
+        <strong>Autor:</strong> Victor Michel Fernandes Leite | <strong>RGM:</strong> 47117877 | <strong>Curso:</strong> Bacharelado em Ciência da Computação
+    </div>
+    <p><em>Guia prático para instalação, execução local e gerenciamento do acervo de livros.</em></p>
+
+    <h2>1. Visão Geral da Aplicação</h2>
+    <p>O <strong>Littera</strong> é uma aplicação web para gerenciamento e consulta de coleções literárias pessoais. O sistema permite cadastrar, listar, pesquisar, filtrar por gênero, visualizar detalhes, atualizar e excluir livros através de uma interface elegante e responsiva.</p>
+
+    <h2>2. Pré-requisitos e Execução Rápida</h2>
+    <div class="box-destaque">
+        <p><strong>Configuração Zero:</strong> O Littera já possui o banco de dados SQLite e o servidor Tomcat 10 embutidos. Basta ter o <strong>Java 17, 21 ou 22</strong> instalado no computador.</p>
+    </div>
+
+    <h3>Como Iniciar o Servidor:</h3>
+    <ol>
+        <li>Abra a pasta <code>Littera App</code>;</li>
+        <li>Execute o arquivo <code>run.bat</code> (ou no PowerShell: <code>.\run.ps1</code>);</li>
+        <li>Aguarde a mensagem de confirmação no terminal e abra seu navegador em:
+            <pre>http://localhost:8080/livros</pre>
+        </li>
+        <li>Para encerrar a execução a qualquer momento, pressione <code>Ctrl + C</code> na janela do terminal.</li>
+    </ol>
+
+    <h2>3. Guia de Funcionalidades</h2>
+
+    <h3>3.1. Navegação Geral</h3>
+    <p>A barra lateral esquerda contém a marca <strong>L. LITTERA</strong> e o ícone de livros. Clicar em qualquer ponto da barra redireciona para a coleção.</p>
+
+    <h3>3.2. Busca e Filtragem por Gêneros</h3>
+    <ul>
+        <li><strong>Busca por Título ou Autor:</strong> Digite uma palavra no campo superior e pressione Enter. A busca é instantânea e não diferencia maiúsculas de minúsculas.</li>
+        <li><strong>Filtro por Gênero:</strong> Clique nas pílulas de categorias (<em>Todos, Romance, Ficção, Filosofia, etc.</em>). A pílula verde limão indica a categoria ativa.</li>
+    </ul>
+
+    <h3>3.3. Adicionar Novo Livro</h3>
+    <ol>
+        <li>Clique no botão <strong>"+ Adicionar livro"</strong> no topo direito;</li>
+        <li>Preencha o <strong>Título</strong>, <strong>Autor</strong> e selecione o <strong>Gênero</strong> (campos obrigatórios);</li>
+        <li>Opcionalmente, informe o Ano de publicação, Número de páginas e Sinopse;</li>
+        <li>Clique em <strong>"Adicionar livro"</strong>. O sistema valida os campos e abre a tela de detalhes da nova obra.</li>
+    </ol>
+
+    <h3>3.4. Detalhes, Edição e Exclusão</h3>
+    <ul>
+        <li><strong>Detalhes:</strong> Clique no cartão de qualquer livro na tela principal para abrir a página detalhada com o selo <em>Na coleção</em>, metadados e sinopse completa.</li>
+        <li><strong>Editar Livro:</strong> Na tela de detalhes, clique em <strong>"Editar livro"</strong>, modifique as informações e clique em <strong>"Salvar alterações"</strong>.</li>
+        <li><strong>Excluir Livro:</strong> Clique no botão branco <strong>"Excluir livro"</strong>. Uma caixa de diálogo modal de segurança solicitará sua confirmação antes de remover o registro.</li>
+    </ul>
+
+    <h2>4. Dúvidas Frequentes (FAQ)</h2>
+    <ul>
+        <li><strong>Onde os dados são salvos?</strong> Os dados são persistidos no arquivo <code>littera.db</code> no diretório da aplicação.</li>
+        <li><strong>Suporta acentuação em português?</strong> Sim, toda a aplicação opera sob codificação UTF-8 nativa.</li>
+    </ul>
+
+</body>
+</html>

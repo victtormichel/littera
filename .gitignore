@@ -1,0 +1,32 @@
+# ==========================================
+# Littera - Regras de Ignoração do Git
+# ==========================================
+
+# Diretório de build e empacotamento
+target/
+build/
+bin/
+out/
+
+# Bancos de dados gerados em tempo de execução
+*.db
+*.db-journal
+
+# Arquivos de log
+*.log
+
+# Arquivos temporários do sistema operacional
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Configurações de IDEs (opcional/pessoal)
+.idea/
+*.iml
+.settings/
+.project
+.classpath
+.vscode/*
+!.vscode/settings.json
